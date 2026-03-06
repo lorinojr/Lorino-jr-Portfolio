@@ -85,7 +85,7 @@ const CONTENT = {
       line1: "EU NÃO",
       line2: "ESCREVO",
       line3: "CÓDIGO.",
-      line4: "Eu arquivo sistemas que escalam.",
+      line4: "Eu projeto sistemas escaláveis.",
       desc: "Construtor nativo de IA de Maputo. Levo ideias do conceito à produção ao vivo 10x mais rápido que o desenvolvimento tradicional. Inglês e Português. Full-stack. Sem desculpas.",
       cta: "VER O TRABALHO →",
       role: "ENGENHEIRO DE PRODUTO · CO-FUNDADOR · VIBECODER"
@@ -132,12 +132,12 @@ const CONTENT = {
       title2: "DIFERENTE.",
       quote: "Eu construo funcionalidades que resolvem problemas e geram receita — não apenas código pelo código.",
       bio1: "Baseado em Maputo, Moçambique, opero na intersecção entre engenharia e estratégia de produto. Como Co-Fundador da OnHighManagement, dominei a arte de implementação rápida usando fluxos de trabalho nativos de IA.",
-      bio2: "Não apenas escrevo código; arquivo soluções que escalam. Minha abordagem é bilíngue, tanto no idioma (EN/PT) quanto no stack, garantindo que cada produto entregue seja um ativo pronto para o mercado.",
+      bio2: "Não apenas escrevo código; projeto soluções que escalam. Minha abordagem é bilíngue, tanto no idioma (EN/PT) quanto no stack, garantindo que cada produto entregue seja um ativo pronto para o mercado.",
       meta: [
         { label: "LOCALIZAÇÃO", val: "Maputo, Moçambique" },
         { label: "EMPRESA", val: "OnHighManagement" },
         { label: "IDIOMAS", val: "Inglês + Português" },
-        { label: "MÉTODO", val: "Nativo de IA · Vibe para Produção" },
+        { label: "MÉTODO", val: "Nativo de IA · Da Vibe para a Produção" },
         { label: "CONTATO", val: "lorinofrdriguesjunior@gmail.com" }
       ]
     },
@@ -159,6 +159,13 @@ export default function App() {
   const mainRef = useRef<HTMLDivElement>(null);
   
   const content = CONTENT[lang];
+
+  const scrollToWork = () => {
+    const workSection = document.getElementById('work');
+    if (workSection) {
+      workSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   // Custom Cursor Logic
   useEffect(() => {
@@ -336,7 +343,7 @@ export default function App() {
       </div>
 
       {/* Ticker */}
-      <div className="ticker-wrap hidden md:flex">
+      <div className="ticker-wrap hidden lg:flex">
         <div className="ticker-content font-mono text-[10px] text-muted">
           {["NEXT.JS", "SUPABASE", "REACT", "NODE.JS", "VERCEL", "CURSOR AI", "POSTGRESQL", "MAKE.COM", "FIREBASE"].map((tech, i) => (
             <span key={i}>{tech} · </span>
@@ -348,7 +355,7 @@ export default function App() {
       </div>
 
       {/* Nav / Language Toggle */}
-      <nav className="fixed top-8 right-8 z-[60] flex gap-4 font-mono text-[11px] uppercase tracking-widest">
+      <nav className="fixed top-8 right-16 lg:right-24 z-[60] flex gap-4 font-mono text-[11px] uppercase tracking-widest bg-bone/80 backdrop-blur-sm px-4 py-2">
         <button 
           onClick={() => setLang('EN')}
           onMouseEnter={() => handleCursorHover('link')}
@@ -369,20 +376,20 @@ export default function App() {
       </nav>
 
       {/* 1. HERO */}
-      <section className="h-[100dvh] flex flex-col justify-center px-8 md:px-24 relative overflow-hidden">
+      <section className="min-h-[100dvh] flex flex-col justify-center px-8 md:px-24 py-32 relative overflow-hidden">
         <div className="absolute top-12 left-8 md:left-24 space-y-1">
           <p className="section-label">{content.hero.sub}</p>
           <p className="section-label">{content.hero.loc}</p>
         </div>
 
         <div className="mt-20 relative z-10">
-          <h1 className="text-[clamp(72px,17vw,210px)] flex flex-col leading-[0.85]">
+          <h1 className="text-[clamp(64px,15vw,210px)] flex flex-col leading-[0.85]">
             <span className="hero-chunk">{content.hero.line1}</span>
             <span className="hero-chunk">{content.hero.line2}</span>
             <span className="hero-chunk text-rust">{content.hero.line3}</span>
           </h1>
           <div className="rule-horizontal hero-rule my-12" />
-          <h2 className="hero-chunk text-[clamp(42px,8vw,110px)] text-indigo italic font-serif lowercase leading-[1.1] pb-2">
+          <h2 className="hero-chunk text-[clamp(36px,7vw,110px)] text-indigo italic font-serif lowercase leading-[1.1] pb-4">
             {content.hero.line4}
           </h2>
         </div>
@@ -393,8 +400,9 @@ export default function App() {
           </p>
         </div>
 
-        <div className="absolute bottom-12 left-8 md:left-24 hero-fade-up">
+        <div className="mt-16 hero-fade-up">
           <button 
+            onClick={scrollToWork}
             onMouseEnter={() => handleCursorHover('link')}
             onMouseLeave={() => handleCursorHover('none')}
             className="cta-button"
@@ -403,7 +411,7 @@ export default function App() {
           </button>
         </div>
 
-        <div className="absolute bottom-12 right-24 hidden md:block rotate-90 origin-right hero-fade-up">
+        <div className="absolute bottom-12 right-24 hidden lg:block rotate-90 origin-right hero-fade-up">
           <p className="section-label whitespace-nowrap">{content.hero.role}</p>
         </div>
       </section>
@@ -419,7 +427,7 @@ export default function App() {
       </section>
 
       {/* 3. WORK */}
-      <section className="py-32 px-8 md:px-24 bg-bone">
+      <section id="work" className="py-32 px-8 md:px-24 bg-bone">
         <div className="flex items-start mb-20">
           <span className="section-label -rotate-90 origin-left translate-y-12 -translate-x-8">02</span>
           <h2 className="reveal-heading text-[clamp(52px,9vw,110px)]">{content.work.title}</h2>
@@ -433,11 +441,11 @@ export default function App() {
               onMouseEnter={() => handleCursorHover('project')}
               onMouseLeave={() => handleCursorHover('none')}
             >
-              <div className="flex flex-col gap-4 max-w-2xl">
+              <div className="flex flex-col gap-4 max-w-2xl relative z-10">
                 <span className={`font-mono text-[11px] uppercase tracking-widest ${project.rust ? 'text-rust' : 'text-muted group-hover:text-bone'}`}>
                   {project.tag}
                 </span>
-                <h3 className="text-[clamp(32px,3.5vw,64px)] transition-colors duration-500">
+                <h3 className="text-[clamp(32px,3.5vw,64px)] transition-colors duration-500 group-hover:text-bone">
                   {project.title}
                 </h3>
                 <p className="font-serif text-[16px] text-muted group-hover:text-bone transition-colors duration-500">
@@ -447,7 +455,7 @@ export default function App() {
                   {project.stack}
                 </p>
               </div>
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 relative z-10">
                 <MoveUpRight size={48} />
               </div>
             </div>
@@ -531,13 +539,14 @@ export default function App() {
           {content.cta.sub}
         </p>
         
-        <button 
+        <a 
+          href="mailto:lorinofrdriguesjunior@gmail.com"
           onMouseEnter={() => handleCursorHover('link')}
           onMouseLeave={() => handleCursorHover('none')}
-          className="bg-rust text-bone font-bebas text-[28px] px-16 py-6 transition-all duration-500 hover:scale-[1.02] hover:brightness-90"
+          className="bg-rust text-bone font-bebas text-[28px] px-16 py-6 transition-all duration-500 hover:scale-[1.02] hover:brightness-90 inline-block"
         >
           {content.cta.btn}
-        </button>
+        </a>
 
         <div className="mt-32 flex flex-col items-center gap-4">
           <div className="flex flex-col md:flex-row gap-4 section-label text-bone/30">
